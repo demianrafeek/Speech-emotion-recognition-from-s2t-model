@@ -2,13 +2,15 @@ from huggingsound import SpeechRecognitionModel
 import torch 
 
 device = "cuda" if torch.cuda.is_available() else "cpu"
-# model = SpeechRecognitionModel("G:\Arete\projects\SER_project\\finetune_s2t_model\output\\pytorch_model.bin")
-model = SpeechRecognitionModel("G:\Arete\projects\SER_project\\finetune_s2t_model\\output\\", device=device)
+model = SpeechRecognitionModel("output/", device=device)
 
-audio_paths = ["G:\Arete\projects\SER_project\\finetune_s2t_model\\en_test2.wav"]#, "G:\Arete\projects\SER_project\\finetune_s2t_model\\ar_test1.wav"]
+data = pd.read_csv(path+'iemocap_40s_data.csv')
+data_path = path+'iemocap_40s_waves/'
+data = data.iloc[int(len(data)*0.9):,:]
+
+test_data = [data_path+name for name in data['name']]
 
 transcriptions = model.transcribe(audio_paths)
-
 print(transcriptions)
 
 
