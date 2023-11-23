@@ -13,8 +13,6 @@ tokens = ['n', 'f', 'a', 's', 'h', 'e', 'z', 'r', 'o', 'd']
 token_set = TokenSet(tokens)
 
 # # define your custom train data
-# data = pd.read_csv('/media/ires/DATA/Speech_task RA/archive/Speech-emotion-recognition-from-s2t-model/iemocap_short_waves_data.csv')
-# path = '/media/ires/DATA/Speech_task RA/archive/Iemocap_audio/iemocap_audio/IEMOCAP_wav/'
 data = pd.read_csv('/iemocap_40s_data_with_dublicats.csv')
 path = '/media/ires/DATA/Speech_task RA/archive/Speech-emotion-recognition-from-s2t-model/iemocap_40s_waves/'
 data = [{'path':path+name, 'transcription':script} for name,script in zip(data['name'],data['emo_script'])]
